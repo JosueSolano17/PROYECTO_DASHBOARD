@@ -16,5 +16,22 @@ function cargarPaginas(url_pagina) {
     .then(res => res.text())
     .then(data => {
       document.getElementById("contenido").innerHTML = data;
+
+      if (url_pagina === 'dashboard') {
+        // Cargar chart.js dinámicamente
+        const script = document.createElement('script');
+        script.src = './js/chart.js'; // ajusta esta ruta según donde esté tu archivo
+        script.onload = () => {
+          if (typeof graficas === 'function') {
+            graficas();
+          }
+        };
+        document.body.appendChild(script);
+      } else if (url_pagina === 'signup') {
+        if (typeof Login === 'function') {
+          Login();
+        }
+      }
     });
 }
+
