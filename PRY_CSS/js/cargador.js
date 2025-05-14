@@ -18,9 +18,9 @@ function cargarPaginas(url_pagina) {
       document.getElementById("contenido").innerHTML = data;
 
       if (url_pagina === 'dashboard') {
-        // Cargar chart.js dinámicamente
+       
         const script = document.createElement('script');
-        script.src = './js/chart.js'; // ajusta esta ruta según donde esté tu archivo
+        script.src = './js/chart.js'; 
         script.onload = () => {
           if (typeof graficas === 'function') {
             graficas();
@@ -32,6 +32,34 @@ function cargarPaginas(url_pagina) {
           Login();
         }
       }
+      if (url_pagina === "usuario") {
+        cargarUsuario();
+      }
     });
 }
 
+function cargarUsuario() {
+
+  let correo = document.getElementById('email_usuer').textContent;
+   let storedNombre = localStorage.getItem('nombre_r');
+    let storedApellido = localStorage.getItem('apellido_r');
+  document.getElementById('correo_usuario').textContent = "Correo: " + correo;
+  document.getElementById('nombre_usuario').textContent = "Nombre: " + storedNombre + " " + storedApellido;
+ document.getElementById('movimientos').style.display = 'none';
+document.getElementById('movimientos_s').style.display = 'inline-block';
+document.getElementById('img_usuarios').style.display = 'inline-block';
+document.getElementById('img_usuario').style.display = 'none';
+
+if(correo==="alexandertoapanta05@gmail.com"){
+  document.getElementById('correo_usuario').textContent = "Correo: " + "alexandertoapanta05@gmail.com";
+  document.getElementById('nombre_usuario').textContent = "Nombre: " + "Alexander" + " " + "Toapanta";
+ document.getElementById('movimientos').style.display = 'inline-block';
+document.getElementById('movimientos_s').style.display = 'none';
+document.getElementById('img_usuarios').style.display = 'none';
+document.getElementById('img_usuario').style.display = 'inline-block';
+
+}
+  
+  
+
+}

@@ -26,7 +26,6 @@ function Login() {
         cargarPaginas('dashboard');
         document.getElementById('navbarDropdown').style.display = 'inline-block';
         document.getElementById('email_usuer').textContent = storedEmail;
-         document.getElementById('correo_usuario').textContent = "Correo: " + correo;
     } else {
         alert('Correo o contraseña erróneos');
         emailInput.value = '';
