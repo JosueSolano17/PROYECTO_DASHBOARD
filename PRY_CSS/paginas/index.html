@@ -1,28 +1,91 @@
+<style>
+    body {
+        background: #f8f9fa;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-container {
+        width: 100%;
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        max-width: 600px;
+        width: 100%;
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        background-color: white;
+    }
+
+    .card-header {
+        background-color: #0d6efd;
+        color: white;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .form-floating>label {
+        padding-left: 1rem;
+    }
+
+    .btn {
+        border-radius: 10px;
+        padding: 0.75rem 1.25rem;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+    }
+
+    .btn-info:hover {
+        background-color: #138496;
+        border-color: #117a8b;
+    }
+</style>
 
 <body>
-    <div class="card shadow">
-        <div class="card-header">
-            Iniciar Sesión
-        </div>
-        <form onsubmit="return false;">
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="txt_email_login" placeholder="Correo electrónico" required>
-                <label for="txt_email">Correo electrónico</label>
+    <div class="login-container">
+        <div class="card shadow">
+            <div class="card-header py-3">
+                Iniciar Sesión
             </div>
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="txt_password_login" placeholder="Contraseña" required>
-                <label for="txt_password">Contraseña</label>
-            </div>
-            <div class="d-flex gap-2">
-                <button class="btn btn-success flex-fill" type="submit" onclick="Login()" >Iniciar Sesión</button>
-            </div>
+            <form onsubmit="return false;">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="txt_email_login" placeholder="Correo electrónico"
+                        required>
+                    <label for="txt_email">Correo electrónico</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="txt_password_login" placeholder="Contraseña"
+                        required>
+                    <label for="txt_password">Contraseña</label>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-success flex-fill" type="submit" onclick="Login()">Iniciar Sesión</button>
+                </div>
 
-            <div class="d-flex gap-2 py-2">
-                <button class="btn btn-info flex-fill" type="submit" onclick="cargarPaginas('signup')">
-                    Registrarse
-                </button>
-            </div>
+                <div class="d-flex gap-2 py-2">
+                    <button class="btn btn-info flex-fill" type="submit" onclick="cargarPaginas('signup')">
+                        Registrarse
+                    </button>
+                </div>
+        </div>
+        </form>
     </div>
-    </form>
     </div>
 </body>
