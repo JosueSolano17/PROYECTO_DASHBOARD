@@ -77,74 +77,60 @@
                 <div class="card-header bg-primary text-white text-center rounded-3 mb-4">
                     <h3 class="m-0">Registrate!!</h3>
                 </div>
-                <form onsubmit="return false;">
+                <form  onsubmit="return false ;" method="get">
                     <div class="mb-3">
                         <label for="txt_Nombre_Registro" class="form-label fw-semibold">Nombre</label>
-                        <input type="text" class="form-control" id="txt_Nombre_Registro" placeholder="Nombre" required>
+                        <input type="text" class="form-control" id="txt_Nombre_Registro" placeholder="Nombre" required name="Nombre">
                     </div>
 
                     <div class="mb-3">
                         <label for="txt_apellido_Registro" class="form-label fw-semibold">Apellido</label>
                         <input type="text" class="form-control" id="txt_apellido_Registro" placeholder="Apellido"
-                            required>
+                            required name="apellido">
                     </div>
 
                     <div class="mb-3">
                         <label for="txt_email_Registro" class="form-label fw-semibold">Correo electrónico</label>
                         <input type="email" class="form-control" id="txt_email_Registro"
-                            placeholder="Correo electrónico" required>
+                            placeholder="Correo electrónico" required name="email">
                     </div>
 
                     <div class="mb-4">
                         <label for="txt_password_Registro" class="form-label fw-semibold">Contraseña</label>
                         <input type="password" class="form-control" id="txt_password_Registro" placeholder="Contraseña"
-                            required>
+                            required name="password">
                     </div>
-                     <div class="mb-4">
-    <label for="telefono" class="form-label fw-semibold">Número de Celular</label>
-                     </div>
-    <div class="input-group">
-        <select class="form-select" id="codigo_pais" name="codigo_pais" required>
-            <option value="+1">US +1</option>
-            <option value="+52">MX +52</option>
-            <option value="+57">CO +57</option>
-            <option value="+593">Ecu +593</option>
-            <option value="+54"> AR +54</option>
-           
-        </select>
-        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Número de celular" maxlength="9" pattern="[0-9]{9}" required>
-    </div>
-    <div class="mb-4">
-        <br><br>
-        <label for=" " class="form-label fw-semibold">Escoja su genero</label>
-        <br>
-        <label for="Hombre"> Hombre</label>
-        <input type="radio" name="genero" id="Hombre" value="Hombre" required>
-        <br>
-        <label for="Mujer"> Mujer</label>
-        <input type="radio" name="genero" id="Mujer" value="Mujer">
-        <br>
-        <label for="Otro"> Otro</label>
-        <input type="radio" name="genero" id="Otro" value="Otro">
-        <br>
-    </div>
-      <div class="mb-4">
-        <br><br>
-        <label for=" " class="form-label fw-semibold">Escoja su musica favorita</label>
-        <br>
-        <label for="brigstrom">Artic Monkeys- brigstrom</label>
-    <input type="checkbox"  name="musica[]" id="kg_tusa" value="brigstrom">
-    <br>
-    <label for="silverb">DMC5- Silverbullet</label>
-    <input type="checkbox" name="musica[]" id="silverb" value="Silverbullet">
-    <br>
-    <label for="gossip">Maneskin- Gossip</label>
-    <input type="checkbox" name="musica[]" id="gossip"value="gossip" >
-    </div>
+   
       <div class="mb-4">
        <label for="fecha">Fecha Nacimiento</label>
         <input type="date" name="fecha" id="fecha" max="2006-05-30" min="1965-05-30" required>
     </div>
+    <div class="mb-3">
+                        <label for="txt_Nombre_Registro" class="form-label fw-semibold">Localizacion</label>
+                        <input type="text" class="form-control" id="txt_Latitud" placeholder="Latitud" required readonly name="latitud">
+                        <input type="text" class="form-control" id="txt_Longitud" placeholder="Longitud" required readonly name="longitud">
+                        <br>
+                        <button type="button" class="btn btn-dark" onclick="Localizacion()">Localizacion</button>
+                    </div>
+
+    <div class="mb-4">
+        <label for="txt_Nombre_Registro" class="form-label fw-semibold">Foto de estudiante</label>
+        <button type="button" id="btn_hc" class="btn btn-dark" onclick="habilitar_Camara()">Habilitar camara</button>
+               <section id="camara_foto" style="display: none;">
+                        <div class="row">
+            <div class="col-md-6">
+                <video  id="my_camara" width="100%" autoplay muted >
+                </video>
+                <button type="button" id="video" onclick="tomarFoto()" class="btn btn-primary"> Tomar foto</button>
+            </div>
+            <div class="col-md-6">
+                <canvas id="foto"   width="420" height="300" style="border: 2px solid black;" > </canvas>
+            </div>
+             <input type="text" name="foto_estudiante" id="foto_estudiante" readonly >
+               </section>
+        </div>
+                    
+
   
                     <div class="d-grid mb-3">
                         <button class="btn btn-success btn-lg" type="submit" onclick="Registro()">Registrarse</button>

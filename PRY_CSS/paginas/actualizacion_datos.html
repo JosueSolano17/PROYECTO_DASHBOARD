@@ -7,7 +7,7 @@
          <div class="container bg-info">
                     <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a onclick="cargarPaginas('dashboard')">Dashboard</a></li>
+                      <!-- <li class="breadcrumb-item"><a onclick="cargarPaginas('dashboard')">Dashboard</a></li> -->
                       <li class="breadcrumb-item"><a onclick="cargarPaginas('usuario')">Usuario</a></li>
                       <li class="breadcrumb-item active white-text" aria-current="page">Actualizar Datos</li>
                     </ol>
@@ -47,51 +47,19 @@
   <label for="password_actualizada"> Contraseña</label>
   <input type="password" name="password_actualizada" id="password_actualizada">
   <br><br>
-                  <div class="mb-4">
-    <label for="telefono_actualizado" class="form-label fw-semibold">Número de Celular</label>
-                     </div>
-    <div class="input-group">
-        <select class="form-select" id="codigo_pais_actualizado" name="codigo_pais_actualizado" required>
-            <option value="+1">US +1</option>
-            <option value="+52">MX +52</option>
-            <option value="+57">CO +57</option>
-            <option value="+593">Ecu +593</option>
-            <option value="+54"> AR +54</option>
-           
-        </select>
-        <input type="text" class="form-control" id="telefono_actualizado" name="telefono_actualizado" placeholder="Número de celular" maxlength="9" pattern="[0-9]{9}" required>
-    </div>
-    <div class="mb-4">
-        <br><br>
-        <label for=" " class="form-label fw-semibold">Escoja su genero</label>
-        <br>
-        <label for="Hombre"> Hombre</label>
-        <input type="radio" name="genero_actualizado" id="Hombre" value="Hombre" required>
-        <br>
-        <label for="Mujer"> Mujer</label>
-        <input type="radio" name="genero_actualizado" id="Mujer" value="Mujer">
-        <br>
-        <label for="Otro"> Otro</label>
-        <input type="radio" name="genero_actualizado" id="Otro" value="Otro">
-        <br>
-    </div>
-      <div class="mb-4">
-        <br><br>
-        <label for=" " class="form-label fw-semibold">Escoja su musica favorita</label>
-        <br>
-        <label for="brigstrom">Artic Monkeys- brigstrom</label>
-    <input type="checkbox"  name="musica_actualizada" id="kg_tusa" value="brigstrom">
-    <br>
-    <label for="silverb">DMC5- Silverbullet</label>
-    <input type="checkbox" name="musica_actualizada" id="silverb" value="Silverbullet">
-    <br>
-    <label for="gossip">Maneskin- Gossip</label>
-    <input type="checkbox" name="musica_actualizada" id="gossip"value="gossip" >
-    </div>
+ 
       <div class="mb-4">
        <label for="fecha_actualizada">Fecha Nacimiento</label>
         <input type="date" name="fecha_actualizada" id="fecha_actualizada" max="2006-05-30" min="1965-05-30" required>
     </div>
+
+<label for="txt_Nombre_Registro" class="form-label fw-semibold">Localizacion</label>
+                        <input type="text" class="form-control" id="txt_Latitud_actualizada" placeholder="Latitud" required readonly name="latitud">
+                        <input type="text" class="form-control" id="txt_Longitud_actualizada" placeholder="Longitud" required readonly name="longitud">
+                        <br>
+ <button type="button" class="btn btn-dark" onclick="Localizacion()">Localizacion</button>
+
+ <br><br>
 
 <button type="submit" onclick="Actualizar()" >Actualizar</button>
 </form>
