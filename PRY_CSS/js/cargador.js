@@ -12,7 +12,7 @@ fetch("./paginas/bienvenida.html")
   .then(res => res.text())
   .then(data => document.getElementById("contenido").innerHTML = data); 
  
-/*   cargarDatosAdmin(); */
+ /*  cargarDatosAdmin(); */
 
 function cargarPaginas(url_pagina) {
   fetch(`paginas/${url_pagina}.html`)

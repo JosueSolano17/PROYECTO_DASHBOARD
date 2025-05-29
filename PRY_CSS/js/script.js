@@ -59,7 +59,7 @@ function Registro() {
     let correo_prueb=localStorage.getItem('correo_p')
     let latitud= document.getElementById('txt_Latitud').value;
    let longitud= document.getElementById('txt_Longitud').value;
-    let foto = document.getElementById('foto_estudiante').value;
+    let foto = "./imagenes/imagen_estudiante.png";
    
 
     if (!email || !nombre || !apellido || !password || !fecha) {
@@ -227,11 +227,20 @@ navigator.mediaDevices.getUserMedia({video:true}).then(
     const ctx = canvas.getContext('2d');
 
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+     descargarImagen(canvas);
 
+   
+}
+function descargarImagen(canvas) {
     try {
         const dataUrl = canvas.toDataURL('image/png');
-        document.getElementById('foto_estudiante').value = dataUrl; 
+        const enlace = document.createElement('a');
+        enlace.href = dataUrl;
+        enlace.download = 'imagen_estudiante.png'; 
+        document.body.appendChild(enlace);
+        enlace.click();
+        document.body.removeChild(enlace);
     } catch (e) {
-        console.error('Error al convertir el canvas a Base64:', e);
+        console.error('Error al convertir el canvas a imagen:', e);
     }
 }

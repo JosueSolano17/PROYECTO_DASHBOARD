@@ -39,10 +39,12 @@
   <label for="txt_correo_actualizado">Correo</label>
   <input type="email" name="txt_correo_actualizado" id="txt_correo_actualizado">
   <br><br>
-
+<!-- 
   <label for="fotoP_actualizado">Imagen de perfil</label>
   <input type="file" name="fotoP_actualizado" id="fotoP_actualizado" accept=".png, .jpg, .jpeg">
   <br><br>
+  <p id="ruta_resultado"></p>
+  <br><br> -->
 
   <label for="password_actualizada"> Contraseña</label>
   <input type="password" name="password_actualizada" id="password_actualizada">
@@ -65,5 +67,19 @@
 </form>
 
 </div>
+<script>
+document.getElementById('fotoP_actualizado').addEventListener('change', function(event) {
+    const archivo = event.target.files[0];
+    if (archivo) {
+        const nombreArchivo = archivo.name;
+        
+        const rutaRelativa = `./imagenes/${nombreArchivo}`;
+        
+        document.getElementById('ruta_resultado').textContent = `Ruta relativa: ${rutaRelativa}`;
 
+        // Si lo necesitas también para un input oculto:
+        // document.getElementById('inputRutaOculta').value = rutaRelativa;
+    }
+});
+</script>
 </body>
