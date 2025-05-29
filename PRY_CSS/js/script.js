@@ -1,21 +1,24 @@
 let stream = null;
 
-let nombre_r;
+/* let nombre_r;
 let apellido_r;
 let correo_r;
 let password_r;
-let num_celular_r;
 let fecha_nacimiento_r;
 let latitud_r;
 let longitud_r;
 let foto_estudiante_r;
 
-/* Dartos quemados */
+Dartos quemados
 let nombre_p;
 let apellido_p;
 let correo_p;
 let password_p;
 let fecha_nacimiento_p;
+let latitud_p;
+let longitud_p;
+let foto_estudiante_p;
+ */
 
 let actualizacion;
 
@@ -59,10 +62,10 @@ function Registro() {
     let correo_prueb = localStorage.getItem('correo_p')
     let latitud = document.getElementById('txt_Latitud').value;
     let longitud = document.getElementById('txt_Longitud').value;
-    let foto = "./imagenes/imagen_estudiante.png";
+    let foto = document.getElementById('foto_estudiante').value;
 
 
-    if (!email || !nombre || !apellido || !password || !fecha) {
+    if (!email || !nombre || !apellido || !password || !fecha ||!foto||!latitud||!longitud||!foto) {
         alert('Por favor, completa todos los campos requeridos.');
         return;
     }
@@ -82,6 +85,7 @@ function Registro() {
         localStorage.setItem('foto_estudiante_r', foto);
         alert('Registro completado');
         deshabilitar_Camara();
+        document.getElementById('foto_estudiante').value=' ';
         cargarPaginas('index');
 
 
@@ -108,29 +112,32 @@ function Actualizar() {
     let fecha = document.getElementById('fecha_actualizada').value;
     let latitud = document.getElementById('txt_Latitud_actualizada').value;
     let longitud = document.getElementById('txt_Longitud_actualizada').value;
+    let foto = document.getElementById('foto_estudiante_actualizada').value;
     let correo_p = localStorage.getItem('correo_p');
     let email = emailInput.value;
     let nombre = nombreInput.value;
     let apellido = apellidoInput.value;
     let password = passwordInput.value;
 
-    if (!email || !nombre || !apellido || !password || !fecha) {
+    if (!email || !nombre || !apellido || !password || !fecha ||!latitud||!longitud) {
         alert('Por favor, completa todos los campos requeridos.');
         return;
     }
 
     if (email === correo_p) {
-        alert('Cambios correctamente realizados')
         localStorage.setItem('nombre_p', nombre);
         localStorage.setItem('apellido_p', apellido);
         localStorage.setItem('correo_p', email);
         document.getElementById('email_usuer').textContent = email;
         localStorage.setItem('password_p', password);
         localStorage.setItem('fecha_nacimiento_p', fecha);
-
+         localStorage.setItem('latitud_p', latitud);
+        localStorage.setItem('longitud_p', longitud);
+        localStorage.setItem('foto_estudiante_p', foto);
+        alert('Cambios correctamente realizados');
     }
+    
     else {
-        alert('Datos Actualizados')
         localStorage.setItem('nombre_r', nombre);
         localStorage.setItem('apellido_r', apellido);
         localStorage.setItem('correo_r', email);
@@ -139,7 +146,11 @@ function Actualizar() {
         localStorage.setItem('fecha_nacimiento_r', fecha);
         localStorage.setItem('latitud_r', latitud);
         localStorage.setItem('longitud_r', longitud);
+        localStorage.setItem('foto_estudiante_r', foto);
+          alert('Datos Actualizados')
     }
+    document.getElementById('foto_estudiante_actualizada').value=' ';
+      deshabilitar_Camara();
 
 }
 
@@ -176,13 +187,23 @@ function Mapa() {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
     } else {
+         latitud = localStorage.getItem('latitud_p');
+        longitud = localStorage.getItem('longitud_p');
+        console.log(latitud);
+        console.log(longitud);
+        var map = L.map('map').setView([latitud, longitud], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
 
     }
 
 }
 
-function Calcular_Edad() {
-    let fecha_na = localStorage.getItem('fecha_nacimiento_r');
+function Calcular_Edad(fecha_nacimiento) {
+    let fecha_na = fecha_nacimiento;
     let fechaNacimiento = new Date(fecha_na);
     let hoy = new Date();
     let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
@@ -240,6 +261,7 @@ function descargarImagen(canvas) {
         document.body.appendChild(enlace);
         enlace.click();
         document.body.removeChild(enlace);
+        document.getElementById('foto_estudiante').value='./imagenes/imagen_estudiante.png';
     } catch (e) {
         console.error('Error al convertir el canvas a imagen:', e);
     }
@@ -259,3 +281,28 @@ function Localizacion_ac() {
         alert('No soporta la geolocation api')
     }
 }
+
+/* function tomarFoto_ac() {
+    const video = document.getElementById('my_camara');
+    const canvas = document.getElementById('foto');
+    const ctx = canvas.getContext('2d');
+
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    descargarImagen_ac(canvas);
+
+
+}
+function descargarImagen_ac(canvas) {
+    try {
+        const dataUrl = canvas.toDataURL('image/png');
+        const enlace = document.createElement('a');
+        enlace.href = dataUrl;
+        enlace.download = 'imagen_estudiante_actualizada.png';
+        document.body.appendChild(enlace);
+        enlace.click();
+        document.body.removeChild(enlace);
+        document.getElementById('foto_estudiante_actualizada').value='./imagenes/imagen_estudiante_actualizada.png';
+    } catch (e) {
+        console.error('Error al convertir el canvas a imagen:', e);
+    }
+} */

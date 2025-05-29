@@ -64,12 +64,28 @@
       <label for="txt_correo_actualizado">Correo</label>
       <input type="email" name="txt_correo_actualizado" id="txt_correo_actualizado" class="form-control">
       <br>
-      <!-- 
-  <label for="fotoP_actualizado">Imagen de perfil</label>
-  <input type="file" name="fotoP_actualizado" id="fotoP_actualizado" accept=".png, .jpg, .jpeg">
+      
+    <label for="" class="form-label fw-semibold">Foto de estudiante</label>
+                        <br>
+                        <button type="button" id="btn_hc" class="btn btn-dark" onclick="habilitar_Camara()">Habilitar
+                            camara</button>
+                        <section id="camara_foto" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <video id="my_camara" width="100%" autoplay muted>
+                                    </video>
+                                    <button type="button" id="video" onclick="tomarFoto()" class="btn btn-primary">
+                                        Tomar foto</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <canvas id="foto" width="420" height="300" style="border: 2px solid black;">
+                                    </canvas>
+                                </div>
+                                <input type="text" name="foto_estudiante_actualizada" id="foto_estudiante_actualizada" readonly
+                                    style="display: none;" value=" ">
+                        </section>
+  
   <br><br>
-  <p id="ruta_resultado"></p>
-  <br><br> -->
 
       <label for="password_actualizada"> Contraseña</label>
       <input type="password" name="password_actualizada" id="password_actualizada" class="form-control">
