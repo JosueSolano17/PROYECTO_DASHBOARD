@@ -1,55 +1,72 @@
+<style>
+    body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+      .breadcrumb {
+    background-color: #17a2b8;
+    margin-bottom: 0;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .breadcrumb-item a {
+    color: white;
+    text-decoration: underline;
+  }
+
+  .breadcrumb-item.active {
+    color: #f1f1f1;
+  }
+</style>
 <body>
-    
+
     <header class="masthead bg-dark text-white text-center">
-  <div class="row">
-    <div class="col-md-3">
-         <div class="container bg-info">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="container bg-info">
                     <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a onclick="cargarPaginas('dashboard')">Dashboard</a></li>
-                      <li class="breadcrumb-item active white-text" aria-current="page">Usuario</li>
-                    </ol>
-                  </nav>
-                    </div>
-    </div>
-    <div class="col-md-3"></div>
-    <div class="col-md-3">
-        
-    </div>
-    <div class="col-md-3">
-          
-    <button onclick="cargarPaginas('actualizacion_datos')">Actualizar Datos</button>
-    </div>
-  </div>
-            <div class="container d-flex align-items-center flex-column">
-                              
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a onclick="cargarPaginas('dashboard')">Dashboard</a></li>
+                            <li class="breadcrumb-item active white-text" aria-current="page">Usuario</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+        <div class="container d-flex align-items-center flex-column">
+
             <h1 class="masthead-heading text-uppercase mb-0">Estudiante</h1>
             <br><br>
-                <img class="masthead-avatar mb-5"  id="img_usuario" src="" alt="..."  width="200px"/>
-              
-            
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-              
-                <p class="masthead-subheading font-weight-light mb-0">
-                <section id="nombre_usuario">  </section>
-                <section id="correo_usuario">  </section>
-                <section id="latitud_usuario">  </section>
-                <section id="fecha_na_usuario">  </section>
-                <section id="edad_usuario">  </section>
+            <img class="masthead-avatar mb-5" id="img_usuario" src="" alt="..." width="200px" />
 
 
-
-                </p>
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
             </div>
-        </header>
-        <section class="page-section portfolio" id="movimientos" >
-            <div id="map"></div> 
-        </section>
-        <!-- <section class="page-section portfolio" id="movimientos" >
+
+            <p class="masthead-subheading font-weight-light mb-0">
+            <section id="nombre_usuario"> </section>
+            <section id="correo_usuario"> </section>
+            <section id="latitud_usuario"> </section>
+            <section id="fecha_na_usuario"> </section>
+            <section id="edad_usuario"> </section>
+
+
+
+            </p>
+        </div>
+    </header>
+    <section class="page-section portfolio" id="movimientos">
+        <div id="map"></div>
+    </section>
+    <!-- <section class="page-section portfolio" id="movimientos" >
             <div class="container">
                 
                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Movimientos Recientes</h2>
@@ -118,8 +135,8 @@
                 </div>
             </div>
         </section> -->
-       <!--  <section class="page-section portfolio" id="movimientos_s" style="display: none;">
+    <!--  <section class="page-section portfolio" id="movimientos_s" style="display: none;">
             <h1>No hay movimientos realizados</h1>
         </section> -->
-        <script src="../js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>

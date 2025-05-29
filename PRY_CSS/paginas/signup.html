@@ -19,68 +19,83 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 3rem 1rem;
+            padding: 1rem;
+            width: 100%;
         }
 
         .card {
-            max-width: 900px;
+            max-width: 700px;
             width: 100%;
-            border-radius: 20px;
+            border-radius: 25px;
+            padding: 3rem;
         }
 
         .card-header {
             background-color: #0d6efd;
             color: white;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
+            border-radius: 1rem;
             text-align: center;
-            padding: 1.5rem 1rem;
+            padding: 1.8rem;
+            font-size: 1.2rem;
+            font-weight: bold;
         }
 
-        .form-floating>.form-control {
-            padding-left: 2.5rem;
+        .form-label {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
         }
 
-        .form-icon {
-            position: absolute;
-            top: 50%;
-            left: 1rem;
-            transform: translateY(-50%);
-            color: #6c757d;
+        .form-control {
+            height: 55px;
+            font-size: 0.9rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .form-group {
-            position: relative;
+        input[type="date"] {
+            height: 55px;
+            font-size: 0.9rem;
+            padding: 0.5rem;
         }
 
-        .link-login {
-            margin-top: 1rem;
-            text-align: center;
+        .btn {
+            font-size: 0.9rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
         }
 
-        .link-login a {
-            cursor: pointer;
-            color: #0d6efd;
-            text-decoration: none;
+        .btn-lg {
+            font-size: 0.95rem;
+            padding: 1rem 2rem;
         }
 
-        .link-login a:hover {
-            text-decoration: underline;
+        #camara_foto video,
+        #camara_foto canvas {
+            border-radius: 10px;
+            width: 100%;
+        }
+
+        .text-center a {
+            font-size: 0.9rem;
         }
     </style>
+
+
 </head>
 
 <body>
-    <div class="container my-5 d-flex justify-content-center">
+    <div class="container d-flex justify-content-center">
         <div class="form-container">
-            <div class="card shadow rounded-4 p-4 w-100" >
+            <div class="card shadow">
                 <div class="card-header bg-primary text-white text-center rounded-3 mb-4">
-                    <h3 class="m-0">Registrate!!</h3>
+                    <h3 class="m-0"><strong>Registrate!!</strong></h3>
                 </div>
-                <form  onsubmit="return false ;" method="get">
+                <form onsubmit="return false ;" method="get">
                     <div class="mb-3">
                         <label for="txt_Nombre_Registro" class="form-label fw-semibold">Nombre</label>
-                        <input type="text" class="form-control" id="txt_Nombre_Registro" placeholder="Nombre" required name="Nombre">
+                        <input type="text" class="form-control" id="txt_Nombre_Registro" placeholder="Nombre" required
+                            name="Nombre">
                     </div>
 
                     <div class="mb-3">
@@ -100,40 +115,47 @@
                         <input type="password" class="form-control" id="txt_password_Registro" placeholder="Contraseña"
                             required name="password">
                     </div>
-   
-      <div class="mb-4">
-       <label for="fecha">Fecha Nacimiento</label>
-        <input type="date" name="fecha" id="fecha" max="2006-05-30" min="1965-05-30" required>
-    </div>
-    <div class="mb-3">
-                        <label for="txt_Nombre_Registro" class="form-label fw-semibold">Localizacion</label>
-                        <input type="text" class="form-control" id="txt_Latitud" placeholder="Latitud" required readonly name="latitud">
-                        <input type="text" class="form-control" id="txt_Longitud" placeholder="Longitud" required readonly name="longitud">
+
+                    <div class="mb-4">
+                        <label for="fecha">Fecha Nacimiento</label>
                         <br>
+                        <input type="date" name="fecha" id="fecha" max="2006-05-30" min="1965-05-30" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txt_Nombre_Registro" class="form-label fw-semibold">Localizacion</label>
+                        <input type="text" class="form-control" id="txt_Latitud" placeholder="Latitud" required readonly
+                            name="latitud">
+                        <input type="text" class="form-control" id="txt_Longitud" placeholder="Longitud" required
+                            readonly name="longitud">
                         <button type="button" class="btn btn-dark" onclick="Localizacion()">Localizacion</button>
                     </div>
 
-    <div class="mb-4">
-        <label for="txt_Nombre_Registro" class="form-label fw-semibold">Foto de estudiante</label>
-        <button type="button" id="btn_hc" class="btn btn-dark" onclick="habilitar_Camara()">Habilitar camara</button>
-               <section id="camara_foto" style="display: none;">
-                        <div class="row">
-            <div class="col-md-6">
-                <video  id="my_camara" width="100%" autoplay muted >
-                </video>
-                <button type="button" id="video" onclick="tomarFoto()" class="btn btn-primary"> Tomar foto</button>
-            </div>
-            <div class="col-md-6">
-                <canvas id="foto"   width="420" height="300" style="border: 2px solid black;" > </canvas>
-            </div>
-             <input type="text" name="foto_estudiante" id="foto_estudiante" readonly  style="display: none;" value="./imagenes/imagen_estudiante.png">
-               </section>
-        </div>
-                    
+                    <div class="mb-4">
+                        <label for="txt_Nombre_Registro" class="form-label fw-semibold">Foto de estudiante</label>
+                        <br>
+                        <button type="button" id="btn_hc" class="btn btn-dark" onclick="habilitar_Camara()">Habilitar
+                            camara</button>
+                        <section id="camara_foto" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <video id="my_camara" width="100%" autoplay muted>
+                                    </video>
+                                    <button type="button" id="video" onclick="tomarFoto()" class="btn btn-primary">
+                                        Tomar foto</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <canvas id="foto" width="420" height="300" style="border: 2px solid black;">
+                                    </canvas>
+                                </div>
+                                <input type="text" name="foto_estudiante" id="foto_estudiante" readonly
+                                    style="display: none;" value="./imagenes/imagen_estudiante.png">
+                        </section>
+                    </div>
 
-  
+
+
                     <div class="d-grid mb-3">
-                        <button class="btn btn-success btn-lg" type="submit" onclick="Registro()">Registrarse</button>
+                        <button class="btn btn-success btn-lg flex-fill" type="submit" onclick="Registro()"><strong>Registrarse</strong></button>
                     </div>
 
                     <div class="text-center">
