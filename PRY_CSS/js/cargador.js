@@ -39,8 +39,7 @@ function cargarPaginas(url_pagina) {
       if (url_pagina === "usuario") {
         cargarUsuario();
         Mapa();
-       
-
+        deshabilitar_Camara();
        
       }
        if (url_pagina === "actualizacion_datos") {
@@ -91,7 +90,7 @@ if(correo=== correo_p){
 
 }
 
-/* function cargarDatosAdmin(){
+function cargarDatosAdmin(){
 let correo= "alexandertoapanta05@gmail.com";
 let password="12345" ;
 let nombre= "Alexander";
@@ -109,7 +108,7 @@ let foto= "./imagenes/imagen_estudiante_qm.png";
         localStorage.setItem('longitud_p', longitud);
         localStorage.setItem('foto_estudiante_p', foto);
     
-} */
+}
 
 function CargarDatosUsuario() {
   let correo = document.getElementById('email_usuer').textContent;

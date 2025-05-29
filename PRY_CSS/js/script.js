@@ -65,7 +65,7 @@ function Registro() {
     let foto = document.getElementById('foto_estudiante').value;
 
 
-    if (!email || !nombre || !apellido || !password || !fecha ||!foto||!latitud||!longitud||!foto) {
+    if (!email || !nombre || !apellido || !password || !fecha ||!foto||!latitud||!longitud) {
         alert('Por favor, completa todos los campos requeridos.');
         return;
     }
@@ -100,6 +100,7 @@ function Registro() {
 function CerrarSesion() {
     document.getElementById('navbarDropdown').style.display = 'none';
     document.getElementById('email_usuer').textContent = " ";
+    deshabilitar_Camara();
     alert('Sesion cerrada correctamente');
     cargarPaginas('bienvenida');
 }
