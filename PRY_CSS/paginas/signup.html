@@ -91,7 +91,7 @@
                 <div class="card-header bg-primary text-white text-center rounded-3 mb-4">
                     <h3 class="m-0"><strong>Registrate!!</strong></h3>
                 </div>
-                <form onsubmit="return true ;" method="get">
+                <form onsubmit="return false ;" method="get">
                     <div class="mb-3">
                         <label for="txt_Nombre_Registro" class="form-label fw-semibold">Nombre</label>
                         <input type="text" class="form-control" id="txt_Nombre_Registro" placeholder="Nombre" required
@@ -116,6 +116,64 @@
                             required name="password">
                     </div>
 
+
+<div class="mb-4">
+    <label for="telefono" class="form-label fw-semibold">Número de Celular</label>
+    <div class="input-group">
+        <select class="form-select" id="codigo_pais" name="codigo_pais" required>
+            <option value="+1">US +1</option>
+            <option value="+52">MX +52</option>
+            <option value="+57">CO +57</option>
+            <option value="+593">Ecu +593</option>
+        </select>
+      <input type="tel" class="form-control" id="telefono" name="telefono"
+       placeholder="Número de celular" required pattern="[0-9]{9}" maxlength="9"
+       oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+
+    </div>
+</div>
+
+<div class="mb-3">
+    <label class="form-label fw-semibold">Género</label><br>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="genero" id="genero_m" value="Masculino" required>
+        <label class="form-check-label" for="genero_m">Masculino</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="genero" id="genero_f" value="Femenino">
+        <label class="form-check-label" for="genero_f">Femenino</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="genero" id="genero_o" value="Otro">
+        <label class="form-check-label" for="genero_o">Otro</label>
+    </div>
+</div>
+
+<div class="mb-3">
+    <label class="form-label fw-semibold">Música favorita</label><br>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="Beggin - Måneskin" id="musica1">
+        <label class="form-check-label" for="musica1">Beggin - Måneskin</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="New Genesis - Ado" id="musica2">
+        <label class="form-check-label" for="musica2">New Genesis - Ado</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="Devil Trigger -Casey Edwards" id="musica3">
+        <label class="form-check-label" for="musica3">Devil Trigger -Casey Edwards</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="Uprising - Muse" id="musica4">
+        <label class="form-check-label" for="musica4">Uprising - Muse</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="Do I Wanna Know? - Arctic Monkeys" id="musica5">
+        <label class="form-check-label" for="musica5">Do I Wanna Know? - Arctic Monkeys</label>
+    </div>
+</div>
+
+
                     <div class="mb-4">
                         <label for="fecha">Fecha Nacimiento</label>
                         <br>
@@ -124,10 +182,11 @@
                     <div class="mb-3">
                         <label for="txt_Nombre_Registro" class="form-label fw-semibold">Localizacion</label>
                         <input type="text" class="form-control" id="txt_Latitud" placeholder="Latitud" required readonly
-                            name="latitud">
+                            name="latitud" style="display: none;">
                         <input type="text" class="form-control" id="txt_Longitud" placeholder="Longitud" required
-                            readonly name="longitud">
+                            readonly name="longitud" style="display: none;">
                         <button type="button" class="btn btn-dark" onclick="Localizacion()">Localizacion</button>
+                        <div id="map"></div>
                     </div>
 
                     <div class="mb-4">
@@ -164,8 +223,27 @@
                 </form>
             </div>
         </div>
-    </div>
+    
 
+    </div>
+    <!-- Modal -->
+<div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registroModalLabel">Aviso</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body" id="registroModalBody">
+        <!-- Mensaje dinámico -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="cargarPaginas('index')">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>

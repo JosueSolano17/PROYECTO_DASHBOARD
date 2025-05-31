@@ -52,7 +52,7 @@
 
   <div class="container py-5 actualizar-datos">
     <h1>Actualizar datos</h1>
-    <form onsubmit="return true;" method="get">
+    <form onsubmit="return false;" method="get">
       <label for="txt_nombre_actualizado">Nombre</label>
       <input type="text" name="txt_nombre_actualizado" id="txt_nombre_actualizado" class="form-control">
       <br>
@@ -81,7 +81,7 @@
                                     <canvas id="foto" width="243" height="193"  style="border: 2px solid black;">
                                     </canvas>
                                 </div>
-                                <input type="text" name="foto_estudiante_actualizada" id="foto_estudiante_actualizada" readonly
+                                <input type="text" name="foto_estudiante" id="foto_estudiante" readonly
                                     style="display: none;" value=" ">
                         </section>
   
@@ -90,6 +90,64 @@
       <label for="password_actualizada"> Contraseña</label>
       <input type="password" name="password_actualizada" id="password_actualizada" class="form-control">
       <br>
+
+
+
+<div class="mb-4">
+    <label for="telefono" class="form-label fw-semibold">Número de Celular</label>
+    <div class="input-group">
+        <select class="form-select" id="codigo_pais_actualizado" name="codigo_pais" required>
+            <option value="+1">US +1</option>
+            <option value="+52">MX +52</option>
+            <option value="+57">CO +57</option>
+            <option value="+593">Ecu +593</option>
+        </select>
+      <input type="tel" class="form-control" id="telefono_actualizado" name="telefono"
+       placeholder="Número de celular" required pattern="[0-9]{9}" maxlength="9"
+       oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+
+    </div>
+</div>
+
+<div class="mb-3">
+    <label class="form-label fw-semibold">Género</label><br>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="genero_actualizado" id="genero_m" value="Masculino" required>
+        <label class="form-check-label" for="genero_m">Masculino</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="genero_actualizado" id="genero_f" value="Femenino">
+        <label class="form-check-label" for="genero_f">Femenino</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="genero_actualizado" id="genero_o" value="Otro">
+        <label class="form-check-label" for="genero_o">Otro</label>
+    </div>
+</div>
+
+<div class="mb-3">
+    <label class="form-label fw-semibold">Música favorita</label><br>
+    <div class="form-check">
+        <input class="form-check-input musica_actualizada" type="checkbox" value="Beggin - Måneskin" id="musica1">
+        <label class="form-check-label" for="musica1">Beggin - Måneskin</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input musica_actualizada" type="checkbox" value="New Genesis - Ado" id="musica2">
+        <label class="form-check-label" for="musica2">New Genesis - Ado</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input musica_actualizada" type="checkbox" value="Devil Trigger -Casey Edwards" id="musica3">
+        <label class="form-check-label" for="musica3">Devil Trigger -Casey Edwards</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input musica_actualizada" type="checkbox" value="Uprising - Muse" id="musica4">
+        <label class="form-check-label" for="musica4">Uprising - Muse</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input musica_actualizada" type="checkbox" value="Do I Wanna Know? - Arctic Monkeys" id="musica5">
+        <label class="form-check-label" for="musica5">Do I Wanna Know? - Arctic Monkeys</label>
+    </div>
+</div>
 
       <div class="mb-4">
         <label for="fecha_actualizada">Fecha Nacimiento</label>
@@ -104,12 +162,48 @@
         name="longitud">
       <br>
       <button type="button" class="btn btn-dark" onclick="Localizacion_ac()">Localizacion</button>
-
+      <br><br>
+       <div id="map"></div>
       <br><br>
 
       <button type="submit" onclick="Actualizar()" class="btn btn-success">Actualizar</button>
     </form>
 
   </div>
+ <!-- Modal -->
+<div class="modal fade" id="actualizarModal" tabindex="-1" aria-labelledby="actualizarModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="actualizarModalLabel">Aviso</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body" id="actualizarModalBody">
+        <!-- Mensaje dinámico -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="cargarPaginas('usuario')">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- Modal -->
+<div class="modal fade" id="cerrarSesionModal" tabindex="-1" aria-labelledby="cerrarSesionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cerrarSesionModalLabel">Aviso</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body" id="cerrarSesionModalBody">
+        <!-- Mensaje dinámico -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="cargarPaginas('bienvenida')">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>

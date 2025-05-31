@@ -1,25 +1,5 @@
 let stream = null;
 
-/* let nombre_r;
-let apellido_r;
-let correo_r;
-let password_r;
-let fecha_nacimiento_r;
-let latitud_r;
-let longitud_r;
-let foto_estudiante_r;
-
-Dartos quemados
-let nombre_p;
-let apellido_p;
-let correo_p;
-let password_p;
-let fecha_nacimiento_p;
-let latitud_p;
-let longitud_p;
-let foto_estudiante_p;
- */
-
 let actualizacion;
 
 function Login() {
@@ -59,22 +39,38 @@ function Registro() {
     let nombre = document.getElementById('txt_Nombre_Registro').value.trim();
     let apellido = document.getElementById('txt_apellido_Registro').value.trim();
     let fecha = document.getElementById('fecha').value;
-    let correo_prueb = localStorage.getItem('correo_p')
+    let correo_prueb = localStorage.getItem('correo_p');
     let latitud = document.getElementById('txt_Latitud').value;
     let longitud = document.getElementById('txt_Longitud').value;
     let foto = document.getElementById('foto_estudiante').value;
+    let codigo_pais = document.getElementById('codigo_pais').value;
+    let telefono = document.getElementById('telefono').value;
 
+    let genero = document.querySelector('input[name="genero"]:checked');
+    let musicas = document.querySelectorAll('input[type="checkbox"]:checked');
 
-    if (!email || !nombre || !apellido || !password || !fecha ||!foto||!latitud||!longitud) {
+    if (!email || !nombre || !apellido || !password || !fecha || !foto || !latitud || !longitud || !telefono || !codigo_pais) {
         alert('Por favor, completa todos los campos requeridos.');
         return;
     }
 
+    if (!genero) {
+        alert('Por favor, selecciona un género.');
+        return;
+    }
+
+    if (musicas.length === 0) {
+        alert('Por favor, selecciona al menos una música favorita.');
+        return;
+    }
 
     if (email === correo_prueb) {
         alert('Correo ya ingresado');
-
     } else {
+        let generoSeleccionado = genero.value;
+        let musicasSeleccionadas = [];
+        musicas.forEach(m => musicasSeleccionadas.push(m.value));
+
         localStorage.setItem('nombre_r', nombre);
         localStorage.setItem('apellido_r', apellido);
         localStorage.setItem('correo_r', email);
@@ -83,13 +79,15 @@ function Registro() {
         localStorage.setItem('latitud_r', latitud);
         localStorage.setItem('longitud_r', longitud);
         localStorage.setItem('foto_estudiante_r', foto);
-        alert('Registro completado');
+        localStorage.setItem('codigo_pais_r', codigo_pais);
+        localStorage.setItem('telefono_r', telefono);
+        localStorage.setItem('genero_r', generoSeleccionado);
+        localStorage.setItem('musicas_r', JSON.stringify(musicasSeleccionadas));
         deshabilitar_Camara();
-        document.getElementById('foto_estudiante').value=' ';
-        cargarPaginas('index');
-
-
-
+        document.getElementById('foto_estudiante').value = '';
+       document.getElementById("actualizarModalBody").textContent = "Registro exitoso!";
+        const modal = new bootstrap.Modal(document.getElementById("actualizarModal"));
+        modal.show();
     }
 }
 
@@ -101,8 +99,11 @@ function CerrarSesion() {
     document.getElementById('navbarDropdown').style.display = 'none';
     document.getElementById('email_usuer').textContent = " ";
     deshabilitar_Camara();
-    alert('Sesion cerrada correctamente');
-    cargarPaginas('bienvenida');
+     document.getElementById("cerrarSesionModalBody").textContent = "Cerrada Sesión correctamente!";
+        const modal = new bootstrap.Modal(document.getElementById("cerrarSesionModal"));
+        modal.show();
+    
+   
 }
 
 function Actualizar() {
@@ -113,14 +114,21 @@ function Actualizar() {
     let fecha = document.getElementById('fecha_actualizada').value;
     let latitud = document.getElementById('txt_Latitud_actualizada').value;
     let longitud = document.getElementById('txt_Longitud_actualizada').value;
-    let foto = document.getElementById('foto_estudiante_actualizada').value;
+    let foto = document.getElementById('foto_estudiante').value;
+
+    let codigo_pais = document.getElementById('codigo_pais_actualizado').value;
+    let telefono = document.getElementById('telefono_actualizado').value;
+
+    let genero = document.querySelector('input[name="genero_actualizado"]:checked')?.value || "";
+    let musicasSeleccionadas = Array.from(document.querySelectorAll('.musica_actualizada:checked')).map(cb => cb.value);
+
     let correo_p = localStorage.getItem('correo_p');
     let email = emailInput.value;
     let nombre = nombreInput.value;
     let apellido = apellidoInput.value;
     let password = passwordInput.value;
 
-    if (!email || !nombre || !apellido || !password || !fecha ||!latitud||!longitud) {
+    if (!email || !nombre || !apellido || !password || !fecha || !latitud || !longitud || !codigo_pais || !telefono|| !genero) {
         alert('Por favor, completa todos los campos requeridos.');
         return;
     }
@@ -132,13 +140,15 @@ function Actualizar() {
         document.getElementById('email_usuer').textContent = email;
         localStorage.setItem('password_p', password);
         localStorage.setItem('fecha_nacimiento_p', fecha);
-         localStorage.setItem('latitud_p', latitud);
+        localStorage.setItem('latitud_p', latitud);
         localStorage.setItem('longitud_p', longitud);
         localStorage.setItem('foto_estudiante_p', foto);
-        alert('Cambios correctamente realizados');
-    }
-    
-    else {
+         localStorage.setItem('telefono_p', telefono);
+        localStorage.setItem('genero_p', genero);
+        localStorage.setItem('musicas_p', JSON.stringify(musicasSeleccionadas));
+
+       
+    } else {
         localStorage.setItem('nombre_r', nombre);
         localStorage.setItem('apellido_r', apellido);
         localStorage.setItem('correo_r', email);
@@ -147,13 +157,21 @@ function Actualizar() {
         localStorage.setItem('fecha_nacimiento_r', fecha);
         localStorage.setItem('latitud_r', latitud);
         localStorage.setItem('longitud_r', longitud);
+        localStorage.setItem('codigo_pais_r', codigo_pais);
         localStorage.setItem('foto_estudiante_r', foto);
-          alert('Datos Actualizados')
+        localStorage.setItem('telefono_r', telefono);
+        localStorage.setItem('genero_r', genero);
+        localStorage.setItem('musicas_r', JSON.stringify(musicasSeleccionadas));
+        
     }
-    document.getElementById('foto_estudiante_actualizada').value=' ';
-      deshabilitar_Camara();
 
+    document.getElementById('foto_estudiante').value = '';
+    deshabilitar_Camara();
+     document.getElementById("actualizarModalBody").textContent = "Datos actualizados correctamente!";
+        const modal = new bootstrap.Modal(document.getElementById("actualizarModal"));
+        modal.show();
 }
+
 
 function Localizacion() {
     let geolocation = navigator.geolocation;
@@ -163,11 +181,29 @@ function Localizacion() {
             let longitud = posiciones.coords.longitude;
             document.getElementById('txt_Latitud').value = latitud;
             document.getElementById('txt_Longitud').value = longitud;
+              latitud = parseFloat(latitud);
+    longitud = parseFloat(longitud);
+
+    var map = L.map('map').setView([latitud, longitud], 13);
+
+   
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+  
+    L.marker([latitud, longitud])
+        .addTo(map)
+        .bindPopup('Su ubicación actual es')
+        .openPopup();
 
         });
     } else {
         alert('No soporta la geolocation api')
     }
+
+  
 
 }
 function Mapa() {
@@ -176,31 +212,32 @@ function Mapa() {
     let storedEmail = localStorage.getItem('correo_r');
     let storedEmail_p = localStorage.getItem('correo_p');
     let email = document.getElementById('email_usuer').textContent;
+
     if (email == storedEmail) {
         latitud = localStorage.getItem('latitud_r');
         longitud = localStorage.getItem('longitud_r');
-        console.log(latitud);
-        console.log(longitud);
-        var map = L.map('map').setView([latitud, longitud], 13);
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
     } else {
-         latitud = localStorage.getItem('latitud_p');
+        latitud = localStorage.getItem('latitud_p');
         longitud = localStorage.getItem('longitud_p');
-        console.log(latitud);
-        console.log(longitud);
-        var map = L.map('map').setView([latitud, longitud], 13);
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
-
     }
 
+   
+    latitud = parseFloat(latitud);
+    longitud = parseFloat(longitud);
+
+    var map = L.map('map').setView([latitud, longitud], 13);
+
+   
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+  
+    L.marker([latitud, longitud])
+        .addTo(map)
+        .bindPopup('Su ubicación actual es')
+        .openPopup();
 }
 
 function Calcular_Edad(fecha_nacimiento) {
@@ -249,22 +286,17 @@ function tomarFoto() {
     const ctx = canvas.getContext('2d');
 
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    descargarImagen(canvas);
+    GuardarImagen(canvas);
 
 
 }
-function descargarImagen(canvas) {
+function GuardarImagen(canvas) {
     try {
         const dataUrl = canvas.toDataURL('image/png');
-        const enlace = document.createElement('a');
-        enlace.href = dataUrl;
-        enlace.download = 'imagen_estudiante.png';
-        document.body.appendChild(enlace);
-        enlace.click();
-        document.body.removeChild(enlace);
-        document.getElementById('foto_estudiante').value='./imagenes/imagen_estudiante.png';
+     
+        document.getElementById('foto_estudiante').value = dataUrl;
     } catch (e) {
-        console.error('Error al convertir el canvas a imagen:', e);
+        console.error('Error al convertir el canvas a Base64:', e);
     }
 }
 
@@ -283,27 +315,3 @@ function Localizacion_ac() {
     }
 }
 
-/* function tomarFoto_ac() {
-    const video = document.getElementById('my_camara');
-    const canvas = document.getElementById('foto');
-    const ctx = canvas.getContext('2d');
-
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    descargarImagen_ac(canvas);
-
-
-}
-function descargarImagen_ac(canvas) {
-    try {
-        const dataUrl = canvas.toDataURL('image/png');
-        const enlace = document.createElement('a');
-        enlace.href = dataUrl;
-        enlace.download = 'imagen_estudiante_actualizada.png';
-        document.body.appendChild(enlace);
-        enlace.click();
-        document.body.removeChild(enlace);
-        document.getElementById('foto_estudiante_actualizada').value='./imagenes/imagen_estudiante_actualizada.png';
-    } catch (e) {
-        console.error('Error al convertir el canvas a imagen:', e);
-    }
-} */

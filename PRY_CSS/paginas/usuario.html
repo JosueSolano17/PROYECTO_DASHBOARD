@@ -54,9 +54,12 @@
             <p class="masthead-subheading font-weight-light mb-0">
             <section id="nombre_usuario"> </section>
             <section id="correo_usuario"> </section>
-            <section id="latitud_usuario"> </section>
             <section id="fecha_na_usuario"> </section>
             <section id="edad_usuario"> </section>
+            <section id="genero_usuario"> </section>
+            <section id="materias_usuario"> </section>
+            <section id="telefono_usuario"> </section>
+            <section id="latitud_usuario"> </section>
 
 
 
@@ -139,4 +142,20 @@
             <h1>No hay movimientos realizados</h1>
         </section> -->
     <script src="../js/script.js"></script>
+    <div class="modal fade" id="cerrarSesionModal" tabindex="-1" aria-labelledby="cerrarSesionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cerrarSesionModalLabel">Aviso</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body" id="cerrarSesionModalBody">
+        <!-- Mensaje dinámico -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="cargarPaginas('bienvenida')">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
