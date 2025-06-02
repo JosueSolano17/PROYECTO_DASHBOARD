@@ -79,6 +79,77 @@
         .text-center a {
             font-size: 0.9rem;
         }
+        .input-group {
+  border: 1px solid #ced4da;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.input-group select,
+.input-group input[type="tel"] {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background-color: transparent;
+}
+
+.input-group select {
+  max-width: 120px;
+  border-right: 1px solid #ced4da;
+  background-color: #f1f1f1;
+  font-weight: 500;
+}
+
+.input-group input[type="tel"] {
+  flex: 1;
+}
+
+/* Mejora visual al hacer foco */
+.input-group:focus-within {
+  border-color: #495057;
+  box-shadow: 0 0 0 0.15rem rgba(108, 117, 125, 0.25);
+}
+
+.form-check-input.musica_actualizada {
+  cursor: pointer;
+  transform: scale(1.2);
+  margin-right: 0.5rem;
+}
+
+.form-check-label {
+  font-weight: 500;
+  color: #343a40;
+}
+
+/* Mejora visual para los modales */
+.modal-content {
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  background-color: #343a40;
+  color: white;
+  border-bottom: none;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.modal-title {
+  font-weight: 600;
+}
+
+.btn-close {
+  background-color: white;
+  border-radius: 50%;
+}
     </style>
 
 
